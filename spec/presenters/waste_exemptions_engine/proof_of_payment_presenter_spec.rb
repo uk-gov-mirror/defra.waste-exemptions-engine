@@ -155,51 +155,5 @@ module WasteExemptionsEngine
       end
     end
 
-    context "with multiple exemptions in the same band" do
-      let(:exemptions) do
-        [
-          exemption,
-          instance_double(Exemption,
-                          code: "U10",
-                          summary: "spreading waste to benefit agricultural land",
-                          band_id: 1)
-        ]
-      end
-      let(:band_charge_detail) do
-        instance_double(BandChargeDetail,
-                        band_id: 1,
-                        initial_compliance_charge_amount: 43_596,
-                        additional_compliance_charge_amount: 7889)
-      end
-      let(:expected_breakdown) do
-        "* U1 Using waste in construction: £435.96\n" \
-          "* U10 Spreading waste to benefit agricultural land: £78.89\n" \
-          "* Registration charge: £59.04\n" \
-          "* VAT exempt: £0"
-      end
-
-      it "uses the stored initial and additional charges" do
-        expect(personalisation[:exemption_breakdown]).to eq(expected_breakdown)
-      end
-    end
-
-    context "with farming exemptions" do
-      let(:bucket) { instance_double(Bucket, exemptions:) }
-      let(:charge_detail) do
-        instance_double(ChargeDetail,
-                        registration_charge_amount: 5904,
-                        bucket_charge_amount: 31_114,
-                        band_charge_details: [band_charge_detail])
-      end
-      let(:expected_breakdown) do
-        "* Farming exemptions (U1): £311.14\n" \
-          "* Registration charge: £59.04\n" \
-          "* VAT exempt: £0"
-      end
-
-      it "shows the stored bucket charge once" do
-        expect(personalisation[:exemption_breakdown]).to eq(expected_breakdown)
-      end
-    end
   end
 end

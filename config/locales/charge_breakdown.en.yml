@@ -1,0 +1,6 @@
+en:
+  waste_exemptions_engine:
+    charge_breakdown:
+      farming_exemptions: "Farming exemptions"
+      registration_charge: "Registration charge"
+      vat_exempt: "VAT exempt"

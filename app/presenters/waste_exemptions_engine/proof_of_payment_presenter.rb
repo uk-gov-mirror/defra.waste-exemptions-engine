@@ -16,7 +16,7 @@ module WasteExemptionsEngine
         payment_method: translate("payment_methods.#{latest_payment.payment_type}",
                                   default: latest_payment.payment_type.humanize),
         payment_amount: formatted_payment_amount,
-        exemption_breakdown: exemption_breakdown
+        exemption_breakdown: ChargeBreakdownPresenter.new(registration:).breakdown
       }
     end
 
@@ -40,38 +40,6 @@ module WasteExemptionsEngine
 
     def payment_date
       latest_payment.date_time || latest_payment.created_at
-    end
-
-    def exemption_breakdown
-      registration.account.orders.flat_map { |order| order_breakdown(order) }.join("\n")
-    end
-
-    def order_breakdown(order)
-      breakdown = OrderChargeBreakdown.new(order:)
-      lines = exemption_lines(breakdown)
-      lines << "* #{translate(:registration_charge)}: #{format_charge(breakdown.registration_charge_amount)}"
-      lines << "* #{translate(:vat_exempt)}: £0"
-    end
-
-    def exemption_lines(breakdown)
-      lines = []
-
-      if breakdown.bucket_exemptions.any?
-        codes = breakdown.bucket_exemptions.map(&:code).join(", ")
-        lines << "* #{translate(:farming_exemptions)} (#{codes}): #{format_charge(breakdown.bucket_charge_amount)}"
-      end
-
-      breakdown.exemption_charges.each do |item|
-        exemption = item.exemption
-        charge = format_charge(item.amount_pence)
-        lines << "* #{exemption.code} #{exemption.summary.capitalize}: #{charge}"
-      end
-
-      lines
-    end
-
-    def format_charge(amount)
-      "£#{CurrencyConversionService.convert_pence_to_pounds(amount)}"
     end
 
     def translate(key, **)
