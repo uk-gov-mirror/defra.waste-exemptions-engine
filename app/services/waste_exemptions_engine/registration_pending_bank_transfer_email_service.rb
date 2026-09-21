@@ -27,7 +27,7 @@ module WasteExemptionsEngine
       {
         message_type: "email",
         template_id: template_id,
-        template_label: "Registration pending bank transfer payment email",
+        template_label: "Breakdown of charges email",
         sent_to: @recipient
       }
     end
@@ -35,7 +35,7 @@ module WasteExemptionsEngine
     private
 
     def template_id
-      NotificationTemplates::REGISTRATION_PENDING_BANK_TRANSFER_EMAIL
+      NotificationTemplates::BREAKDOWN_OF_CHARGES_EMAIL
     end
 
     def options
@@ -52,7 +52,8 @@ module WasteExemptionsEngine
           iban: I18n.t("#{payment_details_path}.iban"),
           swiftbic: I18n.t("#{payment_details_path}.swift_bic"),
           currency: "Sterling",
-          reg_identifier: @registration.reference
+          reg_identifier: @registration.reference,
+          exemption_breakdown: ChargeBreakdownPresenter.new(registration: @registration).breakdown
         }
       }
     end
