@@ -18,8 +18,11 @@ en:
         payment_processing_time: Allow up to 5 working days to process payment.
         overseas_payments: Overseas payments
         iban: "IBAN: GB23 NWBK 607080 10014411"
+        iban_value: "GB23 NWBK 607080 10014411"
         swift_bic: "SWIFT/BIC: NWBK GB2L"
+        swift_bic_value: "NWBK GB2L"
         currency: "Currency: Sterling"
+        currency_value: "Sterling"
         confirm_payment_heading: "Confirm you've paid"
         confirm_payment_instruction: "Send an email to: %{email} to confirm you've paid."
         confirm_payment_details: "Include these details in the email:"

@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.notifications.service.gov.uk/v2/notifications/letter
+    body:
+      encoding: UTF-8
+      string: '{"template_id":"11a78b15-72dd-4e32-9749-19e03b230d36","personalisation":{"reference":"WEX0123456","first_name":"Gus","last_name":"Kunze","account_number":"10014411","sort_code":"60-70-80","payment_due":"0.00","iban":"GB23
+        NWBK 607080 10014411","swiftbic":"NWBK GB2L","currency":"Sterling","reg_identifier":"WEX0123456","date_registered":"23
+        September 2026","exemption_breakdown":"* U1 Using waste in construction: £435.96","address_line_1":"Gus
+        Kunze","address_line_2":"Pine Acres","address_line_3":"975 Muller Mews","address_line_4":"Singapore","address_line_5":"West
+        Juanita","address_line_6":"BS1 1AA"}}'
+    headers:
+      User-Agent:
+      - NOTIFY-API-RUBY-CLIENT/6.4.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1676'
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 23 Sep 2026 08:48:04 GMT
+      X-B3-Spanid:
+      - self-0903d150857ae45a
+      Server:
+      - gunicorn
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type,Authorization
+      Access-Control-Allow-Methods:
+      - GET,PUT,POST,DELETE
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cache-Control:
+      - no-store, no-cache, private, must-revalidate
+      X-B3-Traceid:
+      - EaK6Ixlihr0ebw6mk26fSd9588qCwF8e8LOKONermcVBUoaATRnFvw==
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 b5de5f521f7a7dcf20e623272604a57a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - LHR3-P4
+      X-Amz-Cf-Id:
+      - EaK6Ixlihr0ebw6mk26fSd9588qCwF8e8LOKONermcVBUoaATRnFvw==
+    body:
+      encoding: UTF-8
+      string: '{"content":{"body":"#Registration number: WEX0123456\r\n\r\n#Date registered:
+        23 September 2026\r\n\r\nDear Gus Kunze,\r\n\r\n#You need to pay for your
+        waste exemption registration.\r\n\r\n#We cannot send proof of your registration
+        until we receive your payment.\r\n\r\n#How to pay\r\n\r\nPay by bank transfer
+        using the details below.\r\n\r\nAccount name: Environment Agency\r\nAccount
+        number: 10014411\r\nSort code: 60-70-80\r\nPayment reference: WEX0123456\r\nPayment
+        due: \u00a30.00\r\n\r\n#Overseas payments\r\n\r\nIBAN: GB23 NWBK 607080 10014411\r\nSWIFT
+        / BIC: NWBK GB2L\r\nCurrency: Sterling\r\n\r\n#After you''ve paid\r\n\r\nYou
+        need to email us to confirm your payment so we can match it to your registration.\r\n\r\nEmail:
+        ea_fsc_ar@gov.sscl.com\r\n\r\nInclude:\r\n\r\n- the date you paid\r\n- the
+        amount you paid\r\n- your payment reference WEX0123456\r\n\r\nAllow 5 working
+        days for us to process your payment and match it to your registration.\r\n\r\n#Breakdown
+        of charges\r\n\r\n* U1 Using waste in construction: \u00a3435.96\r\n\r\nTotal
+        due: \u00a30.00\r\n\r\n#Contact us\r\n\r\nIf you need more help, call the
+        Environment Agency 03708 506506.\r\n\r\nThis is an automated email. Do not
+        reply to this message.","subject":"Your recent waste exemption registration"},"id":"d30287a1-8be9-4936-b83b-3325792468f8","reference":null,"scheduled_for":null,"template":{"id":"11a78b15-72dd-4e32-9749-19e03b230d36","uri":"https://api.notifications.service.gov.uk/services/367ec8d8-ae34-4e85-bb3e-870659f93c43/templates/11a78b15-72dd-4e32-9749-19e03b230d36","version":3},"uri":"https://api.notifications.service.gov.uk/v2/notifications/d30287a1-8be9-4936-b83b-3325792468f8"}
+
+        '
+  recorded_at: Wed, 23 Sep 2026 08:48:04 GMT
+recorded_with: VCR 6.4.0
